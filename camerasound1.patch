@@ -1,0 +1,233 @@
+From f38c016323b3474fc31cfe1ec43a94c42bc46f46 Mon Sep 17 00:00:00 2001
+From: Daniel Tjandra <danieltjandra@gmail.com>
+Date: Sun, 8 Jun 2014 23:11:20 -0400
+Subject: [PATCH] Remove camera sounds
+
+---
+ data/sounds/AllAudio.mk          | 3 ---
+ data/sounds/AudioPackage10.mk    | 3 ---
+ data/sounds/AudioPackage11.mk    | 3 ---
+ data/sounds/AudioPackage12.mk    | 2 +-
+ data/sounds/AudioPackage12_48.mk | 3 +--
+ data/sounds/AudioPackage2.mk     | 2 --
+ data/sounds/AudioPackage3.mk     | 2 --
+ data/sounds/AudioPackage4.mk     | 2 --
+ data/sounds/AudioPackage5.mk     | 3 ---
+ data/sounds/AudioPackage6.mk     | 3 ---
+ data/sounds/AudioPackage7.mk     | 3 ---
+ data/sounds/AudioPackage7alt.mk  | 2 --
+ data/sounds/AudioPackage8.mk     | 3 ---
+ data/sounds/AudioPackage9.mk     | 3 ---
+ data/sounds/OriginalAudio.mk     | 2 --
+ 15 files changed, 2 insertions(+), 37 deletions(-)
+
+diff --git a/data/sounds/AllAudio.mk b/data/sounds/AllAudio.mk
+index b48b33f..3da9f2a 100644
+--- a/data/sounds/AllAudio.mk
++++ b/data/sounds/AllAudio.mk
+@@ -212,8 +212,5 @@ PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+     $(LOCAL_PATH)/effects/ogg/Undock.ogg:system/media/audio/ui/Undock.ogg \
+     $(LOCAL_PATH)/effects/ogg/Unlock.ogg:system/media/audio/ui/Unlock.ogg \
+-    $(LOCAL_PATH)/effects/ogg/VideoRecord_48k.ogg:system/media/audio/ui/VideoRecord.ogg \
+     $(LOCAL_PATH)/effects/ogg/WirelessChargingStarted.ogg:system/media/audio/ui/WirelessChargingStarted.ogg \
+-    $(LOCAL_PATH)/effects/ogg/camera_click_48k.ogg:system/media/audio/ui/camera_click.ogg \
+-    $(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+ 
+diff --git a/data/sounds/AudioPackage10.mk b/data/sounds/AudioPackage10.mk
+index ae4bc88..37a61e0 100644
+--- a/data/sounds/AudioPackage10.mk
++++ b/data/sounds/AudioPackage10.mk
+@@ -22,9 +22,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressDelete_48k.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressInvalid_48k.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressReturn_48k.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/ogg/VideoRecord_48k.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_click_48k.ogg:system/media/audio/ui/camera_click.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage11.mk b/data/sounds/AudioPackage11.mk
+index 3c09297..415d298 100644
+--- a/data/sounds/AudioPackage11.mk
++++ b/data/sounds/AudioPackage11.mk
+@@ -22,9 +22,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressDelete_48k.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressInvalid_48k.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressReturn_48k.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/ogg/VideoRecord_48k.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_click_48k.ogg:system/media/audio/ui/camera_click.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage12.mk b/data/sounds/AudioPackage12.mk
+index af89a82..b966c6b 100644
+--- a/data/sounds/AudioPackage12.mk
++++ b/data/sounds/AudioPackage12.mk
+@@ -12,7 +12,7 @@ ALARM_FILES := Argon Carbon Helium Krypton Neon Oxygen Osmium Platinum
+ NOTIFICATION_FILES := Ariel Ceres Carme Elara Europa Iapetus Io Rhea Salacia Titan Tethys
+ RINGTONE_FILES := Callisto Dione Ganymede Luna Oberon Phobos Sedna Titania Triton Umbriel
+ EFFECT_FILES := Effect_Tick KeypressReturn KeypressInvalid KeypressDelete KeypressSpacebar KeypressStandard \
+-	VideoRecord camera_click camera_focus LowBattery Dock Undock Lock Unlock WirelessChargingStarted
++	LowBattery Dock Undock Lock Unlock WirelessChargingStarted
+ 
+ PRODUCT_COPY_FILES += $(foreach fn,$(ALARM_FILES),\
+ 	$(LOCAL_PATH)/alarms/ogg/$(fn).ogg:system/media/audio/alarms/$(fn).ogg)
+diff --git a/data/sounds/AudioPackage12_48.mk b/data/sounds/AudioPackage12_48.mk
+index 636bb9f..69bf1cf 100644
+--- a/data/sounds/AudioPackage12_48.mk
++++ b/data/sounds/AudioPackage12_48.mk
+@@ -12,7 +12,7 @@ ALARM_FILES := Argon Carbon Helium Krypton Neon Oxygen Osmium Platinum
+ NOTIFICATION_FILES := Ariel Ceres Carme Elara Europa Iapetus Io Rhea Salacia Titan Tethys
+ RINGTONE_FILES := Callisto Dione Ganymede Luna Oberon Phobos Sedna Titania Triton Umbriel
+ EFFECT_FILES := Effect_Tick KeypressReturn KeypressInvalid KeypressDelete KeypressSpacebar KeypressStandard \
+-	VideoRecord camera_click Lock Unlock
++	Lock Unlock
+ 
+ # Alarms not yet available in 48 kHz
+ PRODUCT_COPY_FILES += $(foreach fn,$(ALARM_FILES),\
+@@ -29,7 +29,6 @@ PRODUCT_COPY_FILES += $(foreach fn,$(EFFECT_FILES),\
+ 
+ # no gold-plated version yet
+ PRODUCT_COPY_FILES += \
+-    $(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+     $(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+     $(LOCAL_PATH)/effects/ogg/WirelessChargingStarted.ogg:system/media/audio/ui/WirelessChargingStarted.ogg \
+     $(LOCAL_PATH)/effects/ogg/Dock.ogg:system/media/audio/ui/Dock.ogg \
+diff --git a/data/sounds/AudioPackage2.mk b/data/sounds/AudioPackage2.mk
+index ea07acd..ac70b4b 100644
+--- a/data/sounds/AudioPackage2.mk
++++ b/data/sounds/AudioPackage2.mk
+@@ -33,8 +33,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/KeypressDelete.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressInvalid.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressReturn.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+ 	$(LOCAL_PATH)/effects/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage3.mk b/data/sounds/AudioPackage3.mk
+index a8a3b76..a5ce22e 100644
+--- a/data/sounds/AudioPackage3.mk
++++ b/data/sounds/AudioPackage3.mk
+@@ -33,8 +33,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/KeypressDelete.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressInvalid.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressReturn.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+ 	$(LOCAL_PATH)/effects/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage4.mk b/data/sounds/AudioPackage4.mk
+index bde3ba0..ccb44cf 100644
+--- a/data/sounds/AudioPackage4.mk
++++ b/data/sounds/AudioPackage4.mk
+@@ -38,8 +38,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/KeypressDelete.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressInvalid.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressReturn.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+ 	$(LOCAL_PATH)/effects/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage5.mk b/data/sounds/AudioPackage5.mk
+index 0f01deb..71be089 100644
+--- a/data/sounds/AudioPackage5.mk
++++ b/data/sounds/AudioPackage5.mk
+@@ -19,9 +19,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/KeypressDelete.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressInvalid.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressReturn.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+ 	$(LOCAL_PATH)/effects/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage6.mk b/data/sounds/AudioPackage6.mk
+index 2cdd702..6c81d32 100644
+--- a/data/sounds/AudioPackage6.mk
++++ b/data/sounds/AudioPackage6.mk
+@@ -18,9 +18,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressDelete.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressInvalid.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressReturn.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/ogg/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage7.mk b/data/sounds/AudioPackage7.mk
+index e909235..3729832 100644
+--- a/data/sounds/AudioPackage7.mk
++++ b/data/sounds/AudioPackage7.mk
+@@ -20,9 +20,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressDelete_120.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressInvalid_120.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressReturn_120.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/ogg/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage7alt.mk b/data/sounds/AudioPackage7alt.mk
+index 1132fa9..e19e474 100644
+--- a/data/sounds/AudioPackage7alt.mk
++++ b/data/sounds/AudioPackage7alt.mk
+@@ -20,8 +20,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressDelete_120.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressInvalid_120.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressReturn_120.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/ogg/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage8.mk b/data/sounds/AudioPackage8.mk
+index 0f4b8ad..17a5c70 100644
+--- a/data/sounds/AudioPackage8.mk
++++ b/data/sounds/AudioPackage8.mk
+@@ -22,9 +22,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressDelete.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressInvalid.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressReturn.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/ogg/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/AudioPackage9.mk b/data/sounds/AudioPackage9.mk
+index 36dc921..7390301 100644
+--- a/data/sounds/AudioPackage9.mk
++++ b/data/sounds/AudioPackage9.mk
+@@ -22,9 +22,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressDelete.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressInvalid.ogg:system/media/audio/ui/KeypressInvalid.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/KeypressReturn.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/ogg/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+-	$(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/LowBattery.ogg:system/media/audio/ui/LowBattery.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Dock.ogg:system/media/audio/ui/Dock.ogg \
+ 	$(LOCAL_PATH)/effects/ogg/Undock.ogg:system/media/audio/ui/Undock.ogg \
+diff --git a/data/sounds/OriginalAudio.mk b/data/sounds/OriginalAudio.mk
+index e1ca24b..cb1f0b7 100644
+--- a/data/sounds/OriginalAudio.mk
++++ b/data/sounds/OriginalAudio.mk
+@@ -31,8 +31,6 @@ PRODUCT_COPY_FILES += \
+ 	$(LOCAL_PATH)/effects/KeypressSpacebar.ogg:system/media/audio/ui/KeypressSpacebar.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressDelete.ogg:system/media/audio/ui/KeypressDelete.ogg \
+ 	$(LOCAL_PATH)/effects/KeypressReturn.ogg:system/media/audio/ui/KeypressReturn.ogg \
+-	$(LOCAL_PATH)/effects/VideoRecord.ogg:system/media/audio/ui/VideoRecord.ogg \
+-	$(LOCAL_PATH)/effects/camera_click.ogg:system/media/audio/ui/camera_click.ogg \
+ 	$(LOCAL_PATH)/newwavelabs/BeatPlucker.ogg:system/media/audio/ringtones/BeatPlucker.ogg \
+ 	$(LOCAL_PATH)/newwavelabs/CaffeineSnake.ogg:system/media/audio/notifications/CaffeineSnake.ogg
+ 

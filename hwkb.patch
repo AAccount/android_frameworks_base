@@ -1,0 +1,24 @@
+From 1da0071aae678521a40db182f003ba43dc82a5a5 Mon Sep 17 00:00:00 2001
+From: Daniel Tjandra <danieltjandra@gmail.com>
+Date: Sun, 8 Jun 2014 23:17:13 -0400
+Subject: [PATCH] No automatic activation of tablet specific keyboard
+
+---
+ services/java/com/android/server/wm/WindowManagerService.java | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/services/java/com/android/server/wm/WindowManagerService.java b/services/java/com/android/server/wm/WindowManagerService.java
+index 617c48c..fa212b5 100644
+--- a/services/java/com/android/server/wm/WindowManagerService.java
++++ b/services/java/com/android/server/wm/WindowManagerService.java
+@@ -6777,7 +6777,9 @@ boolean computeScreenConfigurationLocked(Configuration config) {
+             boolean hardKeyboardAvailable = config.keyboard != Configuration.KEYBOARD_NOKEYS;
+             if (hardKeyboardAvailable != mHardKeyboardAvailable) {
+                 mHardKeyboardAvailable = hardKeyboardAvailable;
+-                mHardKeyboardEnabled = hardKeyboardAvailable;
++				//just because a gadget specific keyboard is an available accessory doesn't mean it should
++				//  be enabled right away
++                mHardKeyboardEnabled = false;
+                 mH.removeMessages(H.REPORT_HARD_KEYBOARD_STATUS_CHANGE);
+                 mH.sendEmptyMessage(H.REPORT_HARD_KEYBOARD_STATUS_CHANGE);
+             }
