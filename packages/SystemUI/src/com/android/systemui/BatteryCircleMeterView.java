@@ -87,6 +87,8 @@ public class BatteryCircleMeterView extends ImageView {
     private Paint   mPaintGray;
     private Paint   mPaintSystem;
     private Paint   mPaintRed;
+	private Paint	mPaintYellow;
+	private Paint	mPaintGreen;
     private String  mCircleBatteryView;
 
     private int mCircleColor;
@@ -198,9 +200,18 @@ public class BatteryCircleMeterView extends ImageView {
         Paint usePaint = mPaintSystem;
 
         // turn red when battery is at warning level - same level android battery warning appears
-        if (level <= mWarningLevel) {
+        if (level <= 15) 
+		{
             usePaint = mPaintRed;
         }
+		else if (level > 15 && level <= 50)
+		{
+			usePaint = mPaintYellow;
+		}
+		else if (level > 50)
+		{
+			usePaint = mPaintGreen;
+		}
         usePaint.setAntiAlias(true);
         usePaint.setPathEffect(null);
 
@@ -221,17 +232,30 @@ public class BatteryCircleMeterView extends ImageView {
         canvas.drawArc(drawRect, 270 + animOffset, 3.6f * padLevel, false, usePaint);
         // if chosen by options, draw percentage text in the middle
         // always skip percentage when 100, so layout doesnt break
-        if (level < 100 && mCirclePercent) {
-            if (level <= mWarningLevel) {
+        if (level < 100 && mCirclePercent) 
+		{
+            if (level <= 15) 
+			{
                 mPaintFont.setColor(mPaintRed.getColor());
-            } else if (mIsCharging) {
+            }
+			else if (level > 15 && level <= 50)
+			{
+				 mPaintFont.setColor(mPaintYellow.getColor());
+			}
+			else if (level > 50)
+			{
+				 mPaintFont.setColor(mPaintGreen.getColor());
+			}
+			else if (mIsCharging) 
+			{
                 mPaintFont.setColor(mCircleTextChargingColor);
-            } else {
+            } 
+			else 
+			{
                 mPaintFont.setColor(mCircleTextColor);
             }
             canvas.drawText(Integer.toString(level), textX, mTextY, mPaintFont);
         }
-
     }
 
     @Override
@@ -304,11 +328,15 @@ public class BatteryCircleMeterView extends ImageView {
         mPaintGray = new Paint(mPaintFont);
         mPaintSystem = new Paint(mPaintFont);
         mPaintRed = new Paint(mPaintFont);
+		mPaintYellow = new Paint(mPaintFont);
+		mPaintGreen = new Paint(mPaintFont);
 
         // could not find the darker definition anywhere in resources
         // do not want to use static 0x404040 color value. would break theming.
         mPaintGray.setColor(res.getColor(R.color.darker_gray));
         mPaintRed.setColor(res.getColor(R.color.holo_red_light));
+		mPaintYellow.setColor(Color.rgb(255, 255, 0));
+		mPaintGreen.setColor(Color.rgb(0, 255, 0));
 
         // font needs some extra settings
         mPaintFont.setTextAlign(Align.CENTER);
@@ -358,6 +386,8 @@ public class BatteryCircleMeterView extends ImageView {
 
         float strokeWidth = mCircleSize / 7f;
         mPaintRed.setStrokeWidth(strokeWidth);
+        mPaintYellow.setStrokeWidth(strokeWidth);
+        mPaintGreen.setStrokeWidth(strokeWidth);
         mPaintSystem.setStrokeWidth(strokeWidth);
         mPaintGray.setStrokeWidth(strokeWidth / 3.5f);
         // calculate rectangle for drawArc calls
