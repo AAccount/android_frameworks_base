@@ -518,7 +518,7 @@ public class KeyguardTransportControlView extends FrameLayout {
             setSeekBarsEnabled(false);
         }
 
-        KeyguardUpdateMonitor.getInstance(getContext()).dispatchSetBackground(mMetadata.bitmap);
+        //KeyguardUpdateMonitor.getInstance(getContext()).dispatchSetBackground(mMetadata.bitmap);
         final int flags = mTransportControlFlags;
         setVisibilityBasedOnFlag(mBtnPrev, flags, RemoteControlClient.FLAG_KEY_MEDIA_PREVIOUS);
         setVisibilityBasedOnFlag(mBtnNext, flags, RemoteControlClient.FLAG_KEY_MEDIA_NEXT);
