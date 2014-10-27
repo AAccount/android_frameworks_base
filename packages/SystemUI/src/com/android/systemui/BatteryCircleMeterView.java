@@ -45,6 +45,7 @@ import android.widget.ImageView;
 import com.android.internal.R;
 
 import com.android.systemui.BatteryMeterView;
+import com.android.internal.util.omni.ColorUtils;
 
 /***
  * Note about CircleBattery Implementation:
@@ -91,9 +92,11 @@ public class BatteryCircleMeterView extends ImageView {
 	private Paint	mPaintGreen;
     private String  mCircleBatteryView;
 
+    private int mDefaultColor;
     private int mCircleColor;
     private int mCircleTextColor;
     private int mCircleTextChargingColor;
+    private int mGrayColor;
     private int mCircleAnimSpeed = 4;
 
     private int mCurrentColor = -3;
@@ -103,7 +106,7 @@ public class BatteryCircleMeterView extends ImageView {
     // runnable to invalidate view via mHandler.postDelayed() call
     private final Runnable mInvalidate = new Runnable() {
         public void run() {
-            if(mActivated && mAttached) {
+            if (mActivated && mAttached) {
                 invalidate();
             }
         }
@@ -276,20 +279,6 @@ public class BatteryCircleMeterView extends ImageView {
     }
 
     public void updateSettings() {
-        Resources res = getResources();
-        ContentResolver resolver = getContext().getContentResolver();
-
-        int defaultColor = res.getColor(com.android.systemui.R.color.batterymeter_charge_color);
-        int nowColor = mCurrentColor != -3 ? mCurrentColor : defaultColor;
-
-        mCircleTextColor = nowColor;
-        mCircleTextChargingColor = nowColor;
-        mCircleColor = nowColor;
-
-        mPaintSystem.setColor(mCircleColor);
-        mRectLeft = null;
-        mCircleSize = 0;
-
         int batteryStyle = Settings.System.getIntForUser(getContext().getContentResolver(),
                                 Settings.System.STATUS_BAR_BATTERY_STYLE, 0
                                 , UserHandle.USER_CURRENT);
@@ -298,6 +287,24 @@ public class BatteryCircleMeterView extends ImageView {
         mActivated = (batteryStyle == 3 || mCirclePercent);
 
         setVisibility(mActivated ? View.VISIBLE : View.GONE);
+        doInvalidateView();
+    }
+
+    private void doInvalidateView() {
+        mCircleTextColor = mDefaultColor;
+        int defaultGrayColor = mGrayColor;
+        if (mCurrentColor != -3) {
+            mCircleTextColor = mCurrentColor;
+            if (mIsCharging) {
+                defaultGrayColor = ColorUtils.changeColorTransparency(mCurrentColor, 75);
+            }
+        }
+        mCircleColor = mCircleTextChargingColor = mCircleTextColor;
+        mPaintSystem.setColor(mCircleColor);
+        mPaintGray.setColor(defaultGrayColor);
+
+        mRectLeft = null;
+        mCircleSize = 0;
 
         if (mActivated && mAttached) {
             invalidate();
@@ -305,10 +312,8 @@ public class BatteryCircleMeterView extends ImageView {
     }
 
     public void updateSettings(int defaultColor) {
-        if (mCurrentColor != defaultColor) {
-            mCurrentColor = defaultColor;
-            updateSettings();
-        }
+        mCurrentColor = defaultColor;
+        doInvalidateView();
     }
 
     /***
@@ -331,9 +336,12 @@ public class BatteryCircleMeterView extends ImageView {
 		mPaintYellow = new Paint(mPaintFont);
 		mPaintGreen = new Paint(mPaintFont);
 
+        mDefaultColor = res.getColor(com.android.systemui.R.color.batterymeter_charge_color);
+
         // could not find the darker definition anywhere in resources
         // do not want to use static 0x404040 color value. would break theming.
-        mPaintGray.setColor(res.getColor(R.color.darker_gray));
+        mGrayColor = res.getColor(R.color.darker_gray);
+        mPaintGray.setColor(mGrayColor);
         mPaintRed.setColor(res.getColor(R.color.holo_red_light));
 		mPaintYellow.setColor(Color.rgb(255, 255, 0));
 		mPaintGreen.setColor(Color.rgb(0, 255, 0));
